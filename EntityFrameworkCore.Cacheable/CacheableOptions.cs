@@ -12,6 +12,11 @@ namespace EntityFrameworkCore.Cacheable
     public class CacheableOptions
     {
         /// <summary>
+        /// Set true if cached query should be expired now. Default value is false.
+        /// </summary>
+        public Boolean ForceQuery { get; set; } = false;
+
+        /// <summary>
         /// Limits the lifetime of cached query results. Default value is 5 minutes.
         /// </summary>
         public TimeSpan TimeToLive { get; set; } = TimeSpan.FromMinutes(5);

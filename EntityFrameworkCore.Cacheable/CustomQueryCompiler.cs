@@ -104,7 +104,7 @@ namespace EntityFrameworkCore.Cacheable
                 // generate key to identify query
                 var queryKey = _cacheProvider.CreateQueryKey(query, queryContext.ParameterValues);
 
-                if (_cacheProvider.TryGetCachedResult<TResult>(queryKey, out TResult cacheResult))
+                if (!options.ForceQuery && _cacheProvider.TryGetCachedResult<TResult>(queryKey, out TResult cacheResult))
                 {
                     _logger.Logger.Log<object>(LogLevel.Debug, CacheableEventId.CacheHit, queryKey, null, _logFormatter);
 
